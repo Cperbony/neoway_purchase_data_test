@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cpf: MyString
+  private_purchase: 1
+  incomplete: 1
+  date_of_last_purchase: 2021-08-16 19:22:06
+  average_ticket: 1.5
+  last_purchase_ticket: 1.5
+  most_frequent_store: MyString
+  last_purchase_store: MyString
+
+two:
+  cpf: MyString
+  private_purchase: 1
+  incomplete: 1
+  date_of_last_purchase: 2021-08-16 19:22:06
+  average_ticket: 1.5
+  last_purchase_ticket: 1.5
+  most_frequent_store: MyString
+  last_purchase_store: MyString

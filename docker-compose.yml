@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  web:
+    container_name: neoway
+    tty: true
+    stdin_open: true 
+    build: .
+    image: cperbony/neoway.server.debian
+    restart: unless-stopped
+    command: sh /app/scripts/entrypoint.sh
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_NAME=neoway
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+      - CORE_BASE=$CORE_ENV
+      - SPROCKETS_CACHE=/cache
+    volumes:
+      - .:/app
+      - cache:/cache
+    ports:
+      - 3000:3000
+      - 3001:3001
+    links:
+      - db
+  db:
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=neoway
+      - TZ=America/Sao_Paulo
+    volumes:
+      - neoway:/var/lib/postgresql/data
+volumes:
+  neoway:
+  cache:
+  
