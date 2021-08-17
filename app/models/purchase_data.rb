@@ -71,5 +71,16 @@ class PurchaseData < ApplicationRecord
     CNPJ.valid?(data.to_s) ? data.to_s : 'Invalid CPF'
   end
 
-  
+  def to_app
+    {
+      cpf: cpf,
+      private_purchase: private_purchase,
+      incomplete: incomplete,
+      date_of_last_purchase: date_of_last_purchase.to_date,
+      average_ticket: average_ticket,
+      last_purchase_ticket: last_purchase_ticket,
+      most_frequent_store: most_frequent_store.to_s,
+      last_purchase_store: last_purchase_store.to_s,
+    }
+  end
 end
