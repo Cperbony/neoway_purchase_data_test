@@ -9,7 +9,9 @@ class PurchaseData < ApplicationRecord
       path = File.expand_path('../../base_teste.txt', File.dirname(__FILE__))
       rows = CSV.new(File.read(path)).each.to_a
       rows -= rows.shift
-      rows.last(10).map do |row|
+      # Caso necessário para um teste rápido
+      # rows.last(10).map do |row|
+      rows.map do |row|
         result = row.join(',').split
         cpf = result[0]
         private_purchase = result[1]
