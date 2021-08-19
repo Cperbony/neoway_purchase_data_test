@@ -57,7 +57,6 @@ com isto apenas as 10 últimas lihas do arquivos serão lidas e persistidas
 #### Tratamentos
 Foi efetuado um tratamento para não duplicar o registro cada vez que a página index for carregada chamdo o método de tratamento e persistência de dados.
 
-```link
+
 https://www.linkedin.com/in/claudinei-ap-perboni-30a85317/
-```
 
