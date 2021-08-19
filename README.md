@@ -1,25 +1,63 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Teste para Neoway
 
-Things you may want to cover:
+##### requisitos
 
 * Ruby version
+2.7.2
 
-* System dependencies
+* Rails version
+6.1.4
 
-* Configuration
+* Docker Version
+Docker version 20.10.7, build 20.10.7-0ubuntu1~20.04.1
 
-* Database creation
+* Docker-Compose Version
+docker-compose version 1.25.0
 
-* Database initialization
+## Run Tests para Neoway
 
-* How to run the test suite
+* Entrar na pasta do projeto e buildar as imagens
+```sh
+docker-compose up --build
+```
+* Ao buildar a imagem, será criado o banco de dados postgres para conexão.
 
-* Services (job queues, cache servers, search engines, etc.)
+* Quando os containers estiverem ativos, entrar em local para verificar o retorno da API
 
-* Deployment instructions
+http://localhost:3000/purchases_data/index
 
-* ...
-# neoway_purchase_data_test
+* Ao acessar a página index, é chamado o método purchases_data que carrega os dados do arquivo "base_teste.txt" enviado para análise.
+
+* Foi efetuado uma paginação simples utilizando a gem Kaminari para facilitar a visualização dos dados.
+
+### Testes no console do rails
+* Abrir um terminal e executar
+```sh
+docker exec -it neoway /bin/bash
+```
+* Entrar no console do rails
+```sh
+rails c
+```
+* Para integrar os 49998 dados do arquivo "base_teste.txt" ao banco de dados.
+Rodar no console do rails
+```ruby
+PurchaseData.new.process_data
+```
+#### Teste rápido
+* Caso deseje efetuar um teste de carga rápida, Na linha 12 do arquivo_purchase_data.rb, modificar para:
+
+```ruby
+rows.last(10).map do |row|
+```
+com isto apenas as 10 últimas lihas do arquivos serão lidas e persistidas
+
+#### Tratamentos
+Foi efetuado um tratamento para não duplicar o registro cada vez que a página index for carregada chamdo o método de tratamento e persistência de dados.
+
+```link
+https://www.linkedin.com/in/claudinei-ap-perboni-30a85317/
+```
+
